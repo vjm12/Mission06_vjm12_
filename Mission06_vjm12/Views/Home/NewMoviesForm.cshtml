@@ -1,0 +1,44 @@
+﻿@{
+    ViewData["Title"] = "New Movie Form";
+}
+@model Mission06_vjm12.Models.NewMovie
+
+<h1>Add to the Movie Collection</h1>
+<!--Create add movie form with model, drop down menus, and T/F option, and ensure validation message-->
+<div>
+    <form method="post">
+        <label>Movie Title: </label>
+        <input asp-for="MovieTitle"/>
+        <br /><br />
+        <label>Category: </label>
+        <input asp-for="Category" />
+        <br /><br />
+        <label>Year Made: </label>
+        <input asp-for="Year" />
+        <br /><br />
+        <label>Movie Director: </label>
+        <input asp-for="Director" />
+        <br /><br />
+        <label>Movie Rating: </label>
+        <select asp-for="Rating">
+            <option value="G">G</option>
+            <option value="PG">PG</option>
+            <option value="PG-13">PG-13</option>
+            <option value="R">R</option>
+        </select>
+        <br /><br />
+        <label>Edited? Y/N</label>
+        <select asp-for="Edited">
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+        </select><br /><br />
+        <label>Lent to: </label>
+        <input asp-for="LentTo" />
+        <br /><br />
+        <label>Notes: </label>
+        <input asp-for="Notes" /><br /><br />
+
+        <button type="submit">Add Movie</button>
+        <div asp-validation-summary="All"></div>
+    </form>
+</div>
