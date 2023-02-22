@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "All Movies";
+}
+@model List<NewMovie>
+<!--Create a table and use razor code to iterate through all movies in the list passed from the controller-->
+<table class="table table-bordered table-striped">
+    <thead class="bold">
+        <tr>
+            <td>Category</td>
+            <td>Title</td>
+            <td>Year</td>
+            <td>Director</td>
+            <td>Rating</td>
+            <td>Lent To</td>
+            <td>Edited</td>
+            <td>Notes</td>
+        </tr>
+       
+    </thead>
+    <tbody>
+        @foreach (var x in Model)
+            {
+                <tr>
+                    <td>@x.Category.CategoryName</td>
+                    <td>@x.MovieTitle</td>
+                    <td>@x.Year</td>
+                    <td>@x.Director</td>
+                    <td>@x.Rating</td>
+                    <td>@x.LentTo</td>
+                    <td>@x.Edited</td>
+                    <td>@x.Notes</td>
+                    <!--Add edit and delete buttons that will have the id associated with the record-->
+                    <td><a asp-controller="Home" asp-action="Edit" asp-route-movieid="@x.MovieID">Edit</a></td>
+                    <td><a asp-controller="Home" asp-action="Delete" asp-route-movieid="@x.MovieID">Delete</a></td>
+                </tr>
+            }
+    </tbody>
+</table>

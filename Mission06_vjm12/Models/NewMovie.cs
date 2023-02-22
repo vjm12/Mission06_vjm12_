@@ -11,13 +11,11 @@ namespace Mission06_vjm12.Models
         [Key]
         [Required]
         public int MovieID { get; set; }
-        [Required]
-        public string Category { get; set; }
-        [Required]
+        [Required(ErrorMessage ="Please enter a movie title.")]
         public string MovieTitle { get; set; }
-        [Required]
+        [Required(ErrorMessage ="Please enter the year the movie was made.")]
         public int Year { get; set; }
-        [Required]
+        [Required(ErrorMessage ="Please enter the name of the movie director.")]
         public string Director { get; set; }
         [Required]
         public string Rating { get; set; }
@@ -25,5 +23,10 @@ namespace Mission06_vjm12.Models
         public string LentTo { get; set; }
         [StringLengthAttribute(25)]
         public string Notes { get; set; }
+
+        //Build foreign key relationship
+        [Required]
+        public int CategoryID { get; set; }
+        public Category Category { get; set; }
     }
 }

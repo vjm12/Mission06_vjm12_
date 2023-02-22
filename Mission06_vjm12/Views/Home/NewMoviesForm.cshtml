@@ -7,19 +7,26 @@
 <!--Create add movie form with model, drop down menus, and T/F option, and ensure validation message-->
 <div>
     <form method="post">
-        <label>Movie Title: </label>
+        <label asp-for="MovieTitle">Movie Title: </label>
         <input asp-for="MovieTitle"/>
         <br /><br />
-        <label>Category: </label>
-        <input asp-for="Category" />
+        <!--Use razor code and viewbag to get list of options for Category-->
+        <label asp-for="Category">Category: </label>
+        <select asp-for="CategoryID">
+            <option value="">Select a Category</option>
+            @foreach (Category c in ViewBag.Categories)
+            {
+                <option value="@c.CategoryID">@c.CategoryName</option>
+            }
+        </select>
         <br /><br />
-        <label>Year Made: </label>
+        <label asp-for="Year">Year Made: </label>
         <input asp-for="Year" />
         <br /><br />
-        <label>Movie Director: </label>
+        <label asp-for="Director">Movie Director: </label>
         <input asp-for="Director" />
         <br /><br />
-        <label>Movie Rating: </label>
+        <label asp-for="Rating">Movie Rating: </label>
         <select asp-for="Rating">
             <option value="G">G</option>
             <option value="PG">PG</option>
@@ -27,18 +34,18 @@
             <option value="R">R</option>
         </select>
         <br /><br />
-        <label>Edited? Y/N</label>
+        <label asp-for="Edited">Edited? Y/N</label>
         <select asp-for="Edited">
             <option value="true">Yes</option>
             <option value="false">No</option>
         </select><br /><br />
-        <label>Lent to: </label>
+        <label asp-for="LentTo">Lent to: </label>
         <input asp-for="LentTo" />
         <br /><br />
-        <label>Notes: </label>
+        <label asp-for="Notes">Notes: </label>
         <input asp-for="Notes" /><br /><br />
 
-        <button type="submit">Add Movie</button>
+        <button type="submit">Submit Movie</button>
         <div asp-validation-summary="All"></div>
     </form>
 </div>
